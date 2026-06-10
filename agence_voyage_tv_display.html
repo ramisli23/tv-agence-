@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920, initial-scale=1">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C97A;
+    --navy: #0D1B2A;
+    --navy-mid: #132338;
+    --sky: #1A6B9E;
+    --cream: #F5F0E8;
+    --white: #FFFFFF;
+    --text-muted: rgba(255,255,255,0.55);
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--navy);
+    color: var(--white);
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+  }
+
+  /* HEADER */
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 48px 14px;
+    background: linear-gradient(90deg, var(--navy) 0%, var(--navy-mid) 100%);
+    border-bottom: 1px solid rgba(201,168,76,0.3);
+  }
+
+  .logo-area {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .logo-icon {
+    width: 44px;
+    height: 44px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+  }
+
+  .agency-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--gold-light);
+    letter-spacing: 0.04em;
+  }
+
+  .agency-tagline {
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-top: 1px;
+  }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .live-badge {
+    display: flex; align-items: center; gap: 7px;
+    background: rgba(201,168,76,0.12);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 20px;
+    padding: 5px 14px;
+    font-size: 12px;
+    color: var(--gold-light);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .live-dot {
+    width: 7px; height: 7px;
+    background: #4CAF50;
+    border-radius: 50%;
+    animation: pulse 1.4s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.7); }
+  }
+
+  .clock {
+    font-size: 26px;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    color: var(--white);
+    min-width: 90px;
+    text-align: right;
+  }
+
+  /* HERO BANNER */
+  .hero {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #0D3B5E 0%, #1A6B9E 50%, #0D3B5E 100%);
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 80% at 80% 50%, rgba(201,168,76,0.08) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 100% at 20% 50%, rgba(26,107,158,0.3) 0%, transparent 70%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    padding: 0 48px;
+  }
+
+  .hero-left {}
+
+  .hero-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--gold-light);
+    margin-bottom: 8px;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 52px;
+    font-weight: 900;
+    line-height: 1;
+    background: linear-gradient(90deg, #fff 0%, var(--gold-light) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-sub {
+    margin-top: 8px;
+    font-size: 16px;
+    color: var(--text-muted);
+    font-weight: 300;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 40px;
+  }
+
+  .stat {
+    text-align: center;
+  }
+
+  .stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--gold-light);
+  }
+
+  .stat-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+
+  /* OFFERS GRID */
+  .offers-section {
+    padding: 24px 48px 16px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--cream);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-title::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 20px;
+    background: var(--gold);
+    border-radius: 2px;
+  }
+
+  .offers-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+
+  .offer-card {
+    background: var(--navy-mid);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s;
+    cursor: default;
+  }
+
+  .offer-card.featured {
+    grid-column: span 1;
+    border-color: rgba(201,168,76,0.35);
+  }
+
+  .card-image {
+    height: 130px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-img-fill {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 6s ease-in-out;
+  }
+
+  .card:hover .card-img-fill {
+    transform: scale(1.05);
+  }
+
+  /* Gradient overlays per destination */
+  .dest-paris { background: linear-gradient(135deg, #2C3E50, #3498DB, #85C1E9); }
+  .dest-maldives { background: linear-gradient(135deg, #006994, #00B4D8, #90E0EF); }
+  .dest-dubai { background: linear-gradient(135deg, #B8860B, #DAA520, #F0E68C); }
+  .dest-istanbul { background: linear-gradient(135deg, #8B0000, #C0392B, #E74C3C); }
+  .dest-rome { background: linear-gradient(135deg, #8B4513, #D2691E, #F4A460); }
+  .dest-bali { background: linear-gradient(135deg, #006400, #228B22, #90EE90); }
+  .dest-tokyo { background: linear-gradient(135deg, #4A0E8F, #7B2FBE, #E040FB); }
+  .dest-marrakech { background: linear-gradient(135deg, #B5451B, #E07B39, #F4A261); }
+
+  .card-image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.5) 100%);
+  }
+
+  .destination-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    font-size: 42px;
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4));
+  }
+
+  .badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #E74C3C;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 3px 9px;
+    border-radius: 10px;
+  }
+
+  .badge.promo { background: #E74C3C; }
+  .badge.nouveau { background: var(--sky); }
+  .badge.exclusif { background: linear-gradient(90deg, var(--gold), #B8860B); color: var(--navy); }
+  .badge.bestseller { background: #27AE60; }
+
+  .card-body {
+    padding: 12px 14px 14px;
+  }
+
+  .card-dest {
+    font-size: 17px;
+    font-weight: 700;
+    font-family: 'Playfair Display', serif;
+    color: var(--white);
+    margin-bottom: 2px;
+  }
+
+  .card-detail {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .card-detail span { display: flex; align-items: center; gap: 3px; }
+
+  .card-footer {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-top: 6px;
+  }
+
+  .price-block {}
+
+  .price-from {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+  }
+
+  .price-main {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--gold-light);
+    line-height: 1.1;
+  }
+
+  .price-pp {
+    font-size: 10px;
+    color: var(--text-muted);
+  }
+
+  .price-old {
+    font-size: 11px;
+    text-decoration: line-through;
+    color: rgba(255,255,255,0.3);
+    margin-bottom: 1px;
+  }
+
+  .includes {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .include-pill {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: 2px 7px;
+    font-size: 9.5px;
+    color: var(--text-muted);
+  }
+
+  /* TICKER */
+  .ticker-bar {
+    background: linear-gradient(90deg, var(--gold) 0%, #B8860B 100%);
+    padding: 8px 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .ticker-track {
+    display: inline-block;
+    animation: ticker 30s linear infinite;
+    padding-left: 100%;
+  }
+
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  .ticker-item {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--navy);
+    margin-right: 60px;
+    letter-spacing: 0.03em;
+  }
+
+  .ticker-item::before {
+    content: '✈';
+    margin-right: 10px;
+    opacity: 0.7;
+  }
+
+  /* FOOTER */
+  .footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 48px;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    background: rgba(0,0,0,0.2);
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  .contact-icon { font-size: 16px; }
+
+  .contact-value {
+    color: var(--white);
+    font-weight: 500;
+  }
+
+  .progress-bar {
+    width: 200px;
+    height: 3px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: var(--gold);
+    border-radius: 2px;
+    animation: progress 8s linear infinite;
+    transform-origin: left;
+  }
+
+  @keyframes progress {
+    from { width: 0%; }
+    to { width: 100%; }
+  }
+
+  /* CARD ANIMATION */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .offer-card { animation: fadeInUp 0.5s ease both; }
+  .offer-card:nth-child(1) { animation-delay: 0.1s; }
+  .offer-card:nth-child(2) { animation-delay: 0.2s; }
+  .offer-card:nth-child(3) { animation-delay: 0.3s; }
+  .offer-card:nth-child(4) { animation-delay: 0.4s; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="logo-area">
+    <div class="logo-icon">✈</div>
+    <div>
+      <div class="agency-name">Voyages Prestige</div>
+      <div class="agency-tagline">Agence de voyages &amp; tourisme</div>
+    </div>
+  </div>
+  <div class="header-right">
+    <div class="live-badge">
+      <div class="live-dot"></div>
+      Offres du moment
+    </div>
+    <div class="clock" id="clock">--:--</div>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-left">
+      <div class="hero-label">🌍 Été 2025 — Offres exclusives</div>
+      <div class="hero-title">Voyagez<br>autrement</div>
+      <div class="hero-sub">Des destinations de rêve à des prix inoubliables</div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-number">50+</div>
+        <div class="stat-label">Destinations</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">100%</div>
+        <div class="stat-label">Satisfaction</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">15 ans</div>
+        <div class="stat-label">d'expérience</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- OFFERS -->
+<div class="offers-section">
+  <div class="section-header">
+    <div class="section-title">Nos meilleures offres</div>
+  </div>
+
+  <div class="offers-grid" id="offersGrid">
+
+    <div class="offer-card featured">
+      <div class="card-image dest-paris">
+        <div class="destination-icon">🗼</div>
+        <div class="card-image-overlay"></div>
+        <div class="badge bestseller">Best-seller</div>
+      </div>
+      <div class="card-body">
+        <div class="card-dest">Paris, France</div>
+        <div class="card-detail">
+          <span>📅 7 nuits</span>
+          <span>✈️ Vol inclus</span>
+        </div>
+        <div class="card-footer">
+          <div class="price-block">
+            <div class="price-old">85 000 DA</div>
+            <div class="price-main">72 000 DA</div>
+            <div class="price-pp">par personne</div>
+          </div>
+          <div class="includes">
+            <div class="include-pill">🏨 Hôtel</div>
+            <div class="include-pill">🍳 Petit-déj</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="offer-card">
+      <div class="card-image dest-maldives">
+        <div class="destination-icon">🌴</div>
+        <div class="card-image-overlay"></div>
+        <div class="badge exclusif">Exclusif</div>
+      </div>
+      <div class="card-body">
+        <div class="card-dest">Maldives</div>
+        <div class="card-detail">
+          <span>📅 10 nuits</span>
+          <span>✈️ Vol inclus</span>
+        </div>
+        <div class="card-footer">
+          <div class="price-block">
+            <div class="price-from">À partir de</div>
+            <div class="price-main">185 000 DA</div>
+            <div class="price-pp">par personne</div>
+          </div>
+          <div class="includes">
+            <div class="include-pill">🏝️ Villa</div>
+            <div class="include-pill">All-inclusive</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="offer-card">
+      <div class="card-image dest-istanbul">
+        <div class="destination-icon">🕌</div>
+        <div class="card-image-overlay"></div>
+        <div class="badge promo">-20%</div>
+      </div>
+      <div class="card-body">
+        <div class="card-dest">Istanbul, Turquie</div>
+        <div class="card-detail">
+          <span>📅 5 nuits</span>
+          <span>✈️ Vol inclus</span>
+        </div>
+        <div class="card-footer">
+          <div class="price-block">
+            <div class="price-old">55 000 DA</div>
+            <div class="price-main">44 000 DA</div>
+            <div class="price-pp">par personne</div>
+          </div>
+          <div class="includes">
+            <div class="include-pill">🏨 Hôtel 4★</div>
+            <div class="include-pill">🚌 Excursion</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="offer-card">
+      <div class="card-image dest-dubai">
+        <div class="destination-icon">🏙️</div>
+        <div class="card-image-overlay"></div>
+        <div class="badge nouveau">Nouveau</div>
+      </div>
+      <div class="card-body">
+        <div class="card-dest">Dubaï, EAU</div>
+        <div class="card-detail">
+          <span>📅 6 nuits</span>
+          <span>✈️ Vol inclus</span>
+        </div>
+        <div class="card-footer">
+          <div class="price-block">
+            <div class="price-from">À partir de</div>
+            <div class="price-main">98 000 DA</div>
+            <div class="price-pp">par personne</div>
+          </div>
+          <div class="includes">
+            <div class="include-pill">🏨 5★</div>
+            <div class="include-pill">🎡 Safari</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- TICKER -->
+<div class="ticker-bar">
+  <div class="ticker-track" id="ticker">
+    <span class="ticker-item">Paris 7 nuits dès 72 000 DA</span>
+    <span class="ticker-item">Maldives 10 nuits dès 185 000 DA</span>
+    <span class="ticker-item">Istanbul 5 nuits dès 44 000 DA — PROMO -20%</span>
+    <span class="ticker-item">Dubaï 6 nuits dès 98 000 DA</span>
+    <span class="ticker-item">Rome 5 nuits dès 58 000 DA</span>
+    <span class="ticker-item">Bali 9 nuits dès 130 000 DA</span>
+    <span class="ticker-item">Marrakech 4 nuits dès 38 000 DA</span>
+    <span class="ticker-item">Tokyo 8 nuits dès 160 000 DA</span>
+    <span class="ticker-item">Paris 7 nuits dès 72 000 DA</span>
+    <span class="ticker-item">Maldives 10 nuits dès 185 000 DA</span>
+    <span class="ticker-item">Istanbul 5 nuits dès 44 000 DA — PROMO -20%</span>
+    <span class="ticker-item">Dubaï 6 nuits dès 98 000 DA</span>
+    <span class="ticker-item">Rome 5 nuits dès 58 000 DA</span>
+    <span class="ticker-item">Bali 9 nuits dès 130 000 DA</span>
+    <span class="ticker-item">Marrakech 4 nuits dès 38 000 DA</span>
+    <span class="ticker-item">Tokyo 8 nuits dès 160 000 DA</span>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="contact-item">
+    <span class="contact-icon">📞</span>
+    <span>Appelez-nous : <span class="contact-value">+213 XX XX XX XX</span></span>
+  </div>
+  <div class="contact-item">
+    <span class="contact-icon">📍</span>
+    <span>Adresse : <span class="contact-value">Sétif, Algérie</span></span>
+  </div>
+  <div class="contact-item">
+    <span class="contact-icon">🌐</span>
+    <span>Web : <span class="contact-value">www.votreagence.dz</span></span>
+  </div>
+  <div>
+    <div style="font-size:10px;color:var(--text-muted);margin-bottom:4px;text-align:right;">Actualisation automatique</div>
+    <div class="progress-bar"><div class="progress-fill"></div></div>
+  </div>
+</div>
+
+<script>
+  // Clock
+  function updateClock() {
+    const now = new Date();
+    const h = String(now.getHours()).padStart(2,'0');
+    const m = String(now.getMinutes()).padStart(2,'0');
+    document.getElementById('clock').textContent = h + ':' + m;
+  }
+  updateClock();
+  setInterval(updateClock, 10000);
+</script>
+</body>
+</html>
